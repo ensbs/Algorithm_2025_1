@@ -7,8 +7,8 @@ import java.io.OutputStreamWriter;
 public class Main {
 
 	public static int[] numArray;
-	public static int top = 0;
-	public static int bottom = 0;
+	public static int rear = 0;
+	public static int front = 0;
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -22,25 +22,25 @@ public class Main {
 
 			switch (str[0]) {
 				case "push":
-					numArray[top++] = Integer.parseInt(str[1]);
+					numArray[rear++] = Integer.parseInt(str[1]);
 					break;
 				case "pop":
-					if (top - bottom == 0)
+					if (rear - front == 0)
 						bw.write("-1\n");
 					else
-						bw.write(numArray[bottom++] + "\n");
+						bw.write(numArray[front++] + "\n");
 					break;
 				case "size":
-					bw.write((top - bottom) + "\n");
+					bw.write((rear - front) + "\n");
 					break;
 				case "empty":
-					bw.write((top - bottom == 0 ? 1 : 0) + "\n");
+					bw.write((rear - front == 0 ? 1 : 0) + "\n");
 					break;
 				case "front":
-					bw.write((top - bottom == 0 ? -1 : numArray[bottom]) + "\n");
+					bw.write((rear - front == 0 ? -1 : numArray[front]) + "\n");
 					break;
 				case "back":
-					bw.write((top - bottom == 0 ? -1 : numArray[top - 1]) + "\n");
+					bw.write((rear - front == 0 ? -1 : numArray[rear - 1]) + "\n");
 					break;
 			}
 		}
